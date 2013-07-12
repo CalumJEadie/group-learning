@@ -1,3 +1,5 @@
+API_ROOT = "http://192.168.56.101:5000/api/"
+
 $(document).ready(function() {
 	var urls = []
 	$('div.exercise').each(function(index) {
@@ -13,10 +15,10 @@ $(document).ready(function() {
 	});
 
 	$("button").click(function() {
-		var uri = 'http://' + $(this).attr('formaction');
+		var uri = API_ROOT + "task_progress_update/" + $(this).attr('formaction') + "/complete";
 		console.log(uri);
-		$.post({
-			type: "POST",
+		$.ajax({
+			type: "GET",
 			url: uri,
 			sucess: function() {
 				console.log('sent');
