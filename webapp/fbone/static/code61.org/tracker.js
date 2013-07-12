@@ -1,4 +1,4 @@
-API_ROOT = "http://192.168.56.101:5000/api/"
+API_ROOT = "/api/"
 
 $(document).ready(function() {
 	var urls = []

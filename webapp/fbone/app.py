@@ -13,6 +13,8 @@ from .api import api
 from .admin import admin
 from .extensions import db, mail, cache, login_manager, oid
 from .utils import INSTANCE_FOLDER_PATH
+from .models import TaskProgressUpdate
+
 
 
 # For import *

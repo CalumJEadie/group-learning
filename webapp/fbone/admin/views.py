@@ -8,6 +8,7 @@ from ..decorators import admin_required
 
 from ..user import User
 from .forms import UserForm
+from ..models.task_progress_update import TaskProgressUpdate
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
@@ -45,3 +46,10 @@ def user(user_id):
         flash('User updated.', 'success')
 
     return render_template('admin/user.html', user=user, form=form)
+
+@admin.route('/task_progress_updates')
+@login_required
+@admin_required
+def task_progress_updates():
+    task_progress_updates = TaskProgressUpdate.query.all()
+    return render_template('admin/task_progress_updates.html', task_progress_updates=task_progress_updates, active='task_progresses')

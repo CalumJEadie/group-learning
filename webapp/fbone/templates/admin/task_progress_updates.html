@@ -1,0 +1,23 @@
+{% extends "admin/layout.html" %}
+
+{% block body %}
+<div class="container">
+    <h2>Task progress updates</h2>
+    <table class='table table-bordered table-hover'>
+        <thead>
+            <tr>
+                <th>Task Label</th>
+                <th>Progress Level</th>
+                <th>Recieved Time</th>
+            </tr>
+        </thead>
+        {% for task_progress_update in task_progress_updates %}
+        <tr>
+            <td>{{ task_progress_update.task_label }}</td>
+            <td>{{ task_progress_update.progress_level }}</td>
+            <td>{{ task_progress_update.recieved_time|format_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
