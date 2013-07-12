@@ -9,11 +9,21 @@ $(document).ready(function() {
 	});
 	var to_submit_to = build_urls(urls);
 	$('div.exercise').each(function(index) {
-		$(this).append('<div class="btn-group"><form><button class="btn" formaction="' + to_submit_to[index] + '" type="submit" formmethod="POST">	:)</button><button class="btn" formaction="' + to_submit_to[index] + '" type="submit" formmethod="POST">	:|</button><button class="btn" formaction="' + to_submit_to[index] + '" type="submit" formmethod="POST">:(</button></form></div>')
+		$(this).append('<div class="btn-group"><button class="btn" formaction="' + to_submit_to[index] + '">I get it!</button><button class="btn" formaction="' + to_submit_to[index] + '" type="submit" formmethod="POST">Kinda</button><button class="btn" formaction="' + to_submit_to[index] + '" type="submit" formmethod="POST">What\'s going on?</button><</div>')
+	});
+
+	$("button").click(function() {
+		var uri = 'http://' + $(this).attr('formaction');
+		console.log(uri);
+		$.post({
+			type: "POST",
+			url: uri,
+			sucess: function() {
+				console.log('sent');
+			}
+		})
 	});
 });
-
-
 
 var build_urls = function(array) {
 	var counts = {};
