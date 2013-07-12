@@ -1,4 +1,4 @@
-API_ROOT = "http://192.168.56.101:5000/api/"
+API_ROOT = "/api/"
 
 $(document).ready(function() {
 	var urls = []
@@ -11,7 +11,7 @@ $(document).ready(function() {
 	});
 	var to_submit_to = build_urls(urls);
 	$('div.exercise').each(function(index) {
-		$(this).append('<div class="btn-group"><button class="btn" progress="true" formaction="' + to_submit_to[index] + '">I get it!</button><button class="btn" formaction="' + to_submit_to[index] + '" progress="false">What\'s going on?</button><</div>')
+		$(this).append('<div class="btn-group"><button class="btn" progress="1" formaction="' + to_submit_to[index] + '">I get it!</button><button class="btn" formaction="' + to_submit_to[index] + '" progress="0">What\'s going on?</button><</div>')
 	});
 
 	$("button").click(function() {
