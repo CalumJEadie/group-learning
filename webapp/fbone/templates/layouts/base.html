@@ -44,6 +44,7 @@
                     <div class="nav-collapse collapse pull-right">
                         <ul class="nav">
                             {% if current_user.is_admin() %}
+                            <li><a href="{{ url_for('static', filename='code61.org/ruby2.html') }}">code61.org demo</a></li>
                             <li><a href="{{ url_for('admin.index') }}">{{ current_user.name }}</a></li>
                             {% else %}
                             <li><a href="{{ url_for('user.index') }}">{{ current_user.name }}</a></li>
