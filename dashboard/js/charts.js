@@ -1,13 +1,33 @@
- $(function() {
-    var chart1 = new Highcharts.Chart({
+var data = {
+  "flag": "success", 
+  "progress": [
+    {
+      "completed_count": 8, 
+      "not_completed_count": 20, 
+      "task_label": "functions_with_irb_1"
+    },
+    {
+      "completed_count": 5, 
+      "not_completed_count": 2, 
+      "task_label": "functions_with_irb_2"
+    }
+  ]
+}
+
+$(document).ready(function(){
+    for(var key in data.progress) {
+        var obj = data.progress[key];
+        var accordion = '<div class="accordion-group"><div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">' + obj.task_label + '</a></div><div id="collapseTwo" class="accordion-body collapse"><div class="accordion-inner" id="' + obj.task_label + '"></div></div></div>'
+        $(accordion).appendTo('.accordion');
+        $(function () {
+    $('#' + obj.task_label).highcharts({
         chart: {
-            renderTo: "task1",
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
         },
         title: {
-            text: 'Task Performance'
+            text: 'Browser market shares at a specific website, 2010'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -28,9 +48,12 @@
             type: 'pie',
             name: 'Browser share',
             data: [
-                ['I don\'t get it',   45.0],
-                ['I get it',       26.8]
+                ['I don\'t get it',   obj.completed_count],
+                ['I get it',       obj.not_completed_count]
             ]
         }]
     });
+});
+        console.log(obj.completed_count);
+    }
 });
