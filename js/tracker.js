@@ -1,3 +1,5 @@
+API_ROOT = "http://192.168.56.101:5000/api/"
+
 $(document).ready(function() {
 	var urls = []
 	$('div.exercise').each(function(index) {
@@ -9,14 +11,14 @@ $(document).ready(function() {
 	});
 	var to_submit_to = build_urls(urls);
 	$('div.exercise').each(function(index) {
-		$(this).append('<div class="btn-group"><button class="btn" formaction="' + to_submit_to[index] + '">I get it!</button><button class="btn" formaction="' + to_submit_to[index] + '" type="submit" formmethod="POST">Kinda</button><button class="btn" formaction="' + to_submit_to[index] + '" type="submit" formmethod="POST">What\'s going on?</button><</div>')
+		$(this).append('<div class="btn-group"><button class="btn" progress="true" formaction="' + to_submit_to[index] + '">I get it!</button><button class="btn" formaction="' + to_submit_to[index] + '" progress="false">What\'s going on?</button><</div>')
 	});
 
 	$("button").click(function() {
-		var uri = 'http://' + $(this).attr('formaction');
+		var uri = API_ROOT + "task_progress_update/" + $(this).attr('formaction') + "/" + $(this).attr('progress');
 		console.log(uri);
-		$.post({
-			type: "POST",
+		$.ajax({
+			type: "GET",
 			url: uri,
 			sucess: function() {
 				console.log('sent');
