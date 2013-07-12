@@ -9,6 +9,8 @@ Requirements
 
 https://github.com/imwilsonxu/fbone#usage
 
+virtualenvwrapper
+
 
 Setup
 -----
@@ -27,5 +29,5 @@ Usage
 workon group-learning
 cd webapp
 fab reset
-python manage.py install
+python manage.py runserver
 ```
