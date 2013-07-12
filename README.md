@@ -35,9 +35,28 @@ python manage.py runserver
 API
 ---
 
-    api/
+Creating a task progress update
 
-    task_progress_update/<task_id>/<progress_level>
+    api/task_progress_update/<task_id>/<progress_level>
 
     <task_id> : string
     <progress_level> : boolean (0/1)
+
+Reading task progress
+
+    api/cummulative_task_progress_all
+
+e.g.
+
+```js
+{
+  "flag": "success", 
+  "progress": [
+    {
+      "completed_count": 5, 
+      "not_completed_count": 2, 
+      "task_label": "functions_with_irb_1"
+    }
+  ]
+}
+```
