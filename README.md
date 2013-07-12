@@ -38,3 +38,6 @@ API
     api/
 
     task_progress_update/<task_id>/<progress_level>
+
+    <task_id> : string
+    <progress_level> : boolean (0/1)
