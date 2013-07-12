@@ -31,3 +31,11 @@ def logout():
     if current_user.is_authenticated():
         logout_user()
     return jsonify(flag='success', msg='Logouted.')
+
+@api.route('/task_progress_update/<task_id>/<progress_level>')
+def task_progress_update(task_id, progress_level):
+    """
+    :param task_id: 
+    :param progress_level: {complete,in_progress,strugglying}
+    """
+    return jsonify(flag='success')
