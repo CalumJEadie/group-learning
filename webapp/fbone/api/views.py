@@ -45,3 +45,15 @@ def task_progress_update(task_label, progress_level):
     db.session.add(task_progress_update)
     db.session.commit()
     return jsonify(flag='success')
+
+
+@api.route('/cummulative_task_progress_all')
+def cummulative_task_progress_all():
+    progress = [
+        {
+            "task_label": "functions_with_irb_1",
+            "completed_count": 5,
+            "not_completed_count": 2
+        }
+    ]
+    return jsonify(flag="success", progress=progress)
