@@ -27,6 +27,21 @@ $(document).ready(function() {
 	});
 });
 
+(function poll() {
+	setTimeout(function() {
+		$.ajax({
+			url: "/api/all",
+			type: "GET", 
+			success: function(data) {
+				console.log(data);
+			},
+			dataType: "json",
+			complete: poll,
+			timeout: 2000
+		})
+	}, 1000);
+})();
+
 var build_urls = function(array) {
 	var counts = {};
 	var urls = [];
