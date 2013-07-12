@@ -1,13 +1,30 @@
- $(function() {
-    var chart1 = new Highcharts.Chart({
+var data = {
+  "flag": "success", 
+  "progress": [
+    {
+      "completed_count": 8, 
+      "not_completed_count": 20, 
+      "task_label": "functions_with_irb_1"
+    },
+    {
+      "completed_count": 5, 
+      "not_completed_count": 2, 
+      "task_label": "functions_with_irb_1"
+    }
+  ]
+}
+
+
+
+$(function () {
+    $('#container1').highcharts({
         chart: {
-            renderTo: "task1",
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
         },
         title: {
-            text: 'Task Performance'
+            text: 'Browser market shares at a specific website, 2010'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -34,3 +51,4 @@
         }]
     });
 });
+
