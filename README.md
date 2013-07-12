@@ -3,6 +3,10 @@ Group Learning
 
 Entrepreneur First Education Hackathon 12/07/2013
 
+Resources
+---------
+
+http://ryaneshea.com/lightweight-python-apps-with-flask-twitter-bootstrap-and-heroku
 
 Requirements
 ------------
