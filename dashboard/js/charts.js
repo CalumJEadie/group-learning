@@ -1,4 +1,4 @@
-var data = {
+/*var data = {
   "flag": "success", 
   "progress": [
     {
@@ -18,23 +18,28 @@ var data = {
     }
   ]
 };
+*/
+var data = {};
 
 (function poll() {
     setTimeout(function() {
         $.ajax({
-            url: "api/cummulative_task_progress_all",
+            url: "http://192.168.2.158:5000/api/cummulative_task_progress_all",
             type: "GET", 
-            success: function(data) {
-                console.log(this.data);
+            success: function(the_data) {
+                data = the_data;
+                console.log(the_data);
+                update_display();
             },
             dataType: "json",
             complete: poll,
             timeout: 2000
         })
-    }, 1000);
+    }, 5000);
 })();
 
-$(document).ready(function(){
+
+var update_display = function() {
     for(var key in data.progress) {
         var obj = data.progress[key];
         var accordion = '<div class="accordion-group"><div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#' + obj.task_label + '">' + obj.task_label + '</a></div><div id="' + obj.task_label + '" class="accordion-body collapse"><div class="accordion-inner" id="functions_with_irb_1"></div></div></div>' 
@@ -74,4 +79,8 @@ $(document).ready(function(){
             }]
         });
     };
+}
+
+$(document).ready(function(){
+    update_display();
 }); 
