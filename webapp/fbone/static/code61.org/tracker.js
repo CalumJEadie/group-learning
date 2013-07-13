@@ -22,6 +22,7 @@ $(document).ready(function() {
 			url: uri,
 			sucess: function() {
 				console.log('sent');
+				$(this).parent().hide();
 			}
 		})
 	});
