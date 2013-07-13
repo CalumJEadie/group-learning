@@ -23,7 +23,7 @@ var clear_display = function() {
 }
 
 var spacesInString = function(task_label) {
-    task_label = task_label.replace(/_/g, '');
+    task_label = task_label.replace(/_/g, ' ');
     task_label = task_label.charAt(0).toUpperCase() + task_label.slice(1);
 
     return task_label;
@@ -48,7 +48,7 @@ var update_display = function() {
 		yes.data.push(completed);
 		no.data.push(not_completed);
 		console.log(obj.task_label);
-		names.push(obj.task_label)
+		names.push(spacesInString(obj.task_label))
 	}
 
 	console.log(names)	
