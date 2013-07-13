@@ -19,6 +19,22 @@ var data = {
   ]
 };
 
+(function poll() {
+    setTimeout(function() {
+        $.ajax({
+            url: "/api/all",
+            type: "GET", 
+            success: function(data) {
+                console.log('sup');
+                console.log(this.data);
+            },
+            dataType: "json",
+            complete: poll,
+            timeout: 2000
+        })
+    }, 1000);
+})();
+
 $(document).ready(function(){
     for(var key in data.progress) {
         var obj = data.progress[key];
