@@ -1,30 +1,9 @@
-/*var data = {
-  "flag": "success", 
-  "progress": [
-    {
-      "completed_count": 8, 
-      "not_completed_count": 20, 
-      "task_label": "functions_with_irb_1"
-    },
-    {
-      "completed_count": 98, 
-      "not_completed_count": 2, 
-      "task_label": "functions_with_irb_2"
-    },
-    {
-      "completed_count": 5, 
-      "not_completed_count": 5, 
-      "task_label": "functions_with_irb_3"
-    }
-  ]
-};
-*/
 var data = {};
 
 (function poll() {
     setTimeout(function() {
         $.ajax({
-            url: "http://192.168.2.158:5000/api/cummulative_task_progress_all",
+            url: "/api/cummulative_task_progress_all",
             type: "GET", 
             success: function(the_data) {
                 data = the_data;
