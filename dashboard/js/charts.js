@@ -29,6 +29,7 @@ var data = {};
             success: function(the_data) {
                 data = the_data;
                 console.log(the_data);
+                clear_display();
                 update_display();
             },
             dataType: "json",
@@ -37,6 +38,10 @@ var data = {};
         })
     }, 5000);
 })();
+
+var clear_display = function() {
+    $('div.accordion-group').remove();
+}
 
 
 var update_display = function() {
