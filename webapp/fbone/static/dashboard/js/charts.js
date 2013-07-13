@@ -29,13 +29,78 @@ var spacesInString = function(task_label) {
     return task_label;
 }
 
+var update_display = function() {
+	var series = [];
+	var yes = {};
+	yes.name = "Completed Yes";
+	yes.data = [];
+	
+	var no = {};
+	no.name = "Completed No"
+	no.data = [];
 
+	var names = [];
+
+	for (var key in data.progress) {
+		var obj = data.progress[key],
+		completed = obj.completed_count,
+		not_completed = obj.not_completed_count;
+		yes.data.push(completed);
+		no.data.push(not_completed);
+		console.log(obj.task_label);
+		names.push(obj.task_label)
+	}
+
+	console.log(names)	
+	
+	series.push(yes);
+	series.push(no);
+
+	
+	$('#container').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Progress Report'
+            },
+            xAxis: {
+                categories: names
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Students'
+                }
+            },
+	  colors: ['#10d102', 
+            '#d10202'
+            ],
+            legend: {
+                backgroundColor: '#FFFFFF',
+                reversed: true
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'normal',
+			animation: false
+                }
+            },
+                series: [{name: 'Completed Yes', data: yes.data}, {name: 'Completed No', data: no.data}]
+        });	
+}
+
+/*
 var update_display = function() {
     for(var key in data.progress) {
         var obj = data.progress[key];
         var title = spacesInString(obj.task_label);
-        var accordion = '<div class="accordion-group"><div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#' + obj.task_label + '">' + obj.task_label + '</a></div><div id="' + obj.task_label + '" class="accordion-body collapse"><div class="accordion-inner" id="functions_with_irb_1"></div></div></div>' 
-        $(accordion).appendTo('.accordion');
+	// if exists, don't recreate the div
+	if(!($('#' + obj.task_label).exists())) {
+		var accordion = '<div class="accordion-group"><div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#' + obj.task_label + '">' + obj.task_label + '</a></div><div id="' + obj.task_label + '" class="accordion-body collapse"><div class="accordion-inner" id="functions_with_irb_1"></div></div></div>' 
+		$(accordion).appendTo('.accordion');
+	}
+
         console.log(obj.task_label)
         $('#' + obj.task_label).highcharts({
             chart: {
@@ -72,6 +137,7 @@ var update_display = function() {
         });
     };
 }
+*/
 
 $(document).ready(function(){
     update_display();

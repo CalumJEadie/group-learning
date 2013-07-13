@@ -17,12 +17,14 @@ $(document).ready(function() {
 	$("button").click(function() {
 		var uri = API_ROOT + "task_progress_update/" + $(this).attr('formaction') + "/" + $(this).attr('progress');
 		console.log(uri);
+		$(this).parent().hide();
+		$(this).append('<div class="alert alert-success">Thanks for the feeback.</div>')
 		$.ajax({
 			type: "GET",
 			url: uri,
 			sucess: function() {
 				console.log('sent');
-				$(this).parent().hide();
+
 			}
 		})
 	});
