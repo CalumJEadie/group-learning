@@ -22,10 +22,18 @@ var clear_display = function() {
     $('div.accordion-group').remove();
 }
 
+var spacesInString = function(task_label) {
+    task_label = task_label.replace(/_/g, '');
+    task_label = task_label.charAt(0).toUpperCase() + task_label.slice(1);
+
+    return task_label;
+}
+
 
 var update_display = function() {
     for(var key in data.progress) {
         var obj = data.progress[key];
+        var title = spacesInString(obj.task_label);
         var accordion = '<div class="accordion-group"><div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#' + obj.task_label + '">' + obj.task_label + '</a></div><div id="' + obj.task_label + '" class="accordion-body collapse"><div class="accordion-inner" id="functions_with_irb_1"></div></div></div>' 
         $(accordion).appendTo('.accordion');
         console.log(obj.task_label)
@@ -36,7 +44,7 @@ var update_display = function() {
                 plotShadow: false
             },
             title: {
-                text: obj.text_label
+                text: title
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
