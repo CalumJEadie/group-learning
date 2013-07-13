@@ -1,1 +1,0 @@
-function newTask(name,true,false){ $('<div class="accordion-group"><div class="accordion-heading"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Test</a></div><div id="collapseTwo" class="accordion-body collapse"><div class="accordion-inner" id="task2"></div></div></div>').appendTo('.accordian');}
