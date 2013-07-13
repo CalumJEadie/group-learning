@@ -36,7 +36,7 @@ var update_display = function() {
                 plotShadow: false
             },
             title: {
-                text: 'Browser market shares at a specific website, 2010'
+                text: obj.text_label
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
