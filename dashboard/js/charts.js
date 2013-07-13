@@ -22,10 +22,9 @@ var data = {
 (function poll() {
     setTimeout(function() {
         $.ajax({
-            url: "/api/all",
+            url: "api/cummulative_task_progress_all",
             type: "GET", 
             success: function(data) {
-                console.log('sup');
                 console.log(this.data);
             },
             dataType: "json",
