@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+
 from flask.ext.script import Manager, Server
 
 from fbone import create_app
@@ -11,7 +13,8 @@ from fbone.utils import MALE
 app = create_app()
 manager = Manager(app)
 
-manager.add_command("runserver", Server(host="0.0.0.0", port=5000))
+port = int(os.environ.get("PORT", 5000))
+manager.add_command("runserver", Server(host="0.0.0.0", port=port))
 
 @manager.command
 def run():
